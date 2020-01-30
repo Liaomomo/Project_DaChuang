@@ -17,6 +17,7 @@
         <property name="password" value="123456" />
    </bean>
    
+   
 <!-- 2.配置会话工厂 -->
 <!-- 默认情况下：mybatis是不支持spring的数据源的 -->    
 <!-- 答：需要一个整合包 mybatis-spirng.jar
@@ -30,17 +31,21 @@
 		value="/WEB-INF/mapper/*Mapper.xml"></property>
 </bean>             
    
-   <!-- 3.配置扫描器，将映射接口的动态对象创建，并且注入到spring容器里面 -->   
+
+<!-- 3.配置扫描器，将映射接口的动态对象创建，并且注入到spring容器里面 -->   
 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	<property name="sqlSessionFactoryBeanName" 
 	value="sqlSessionFactory"></property>
 	<property name="basePackage"
-	 value="com.qd.demo.mapper"></property>
+	 value="com.tiaoma.mapper"></property>
 	<!-- 指定扫描注解 -->
 	<property name="annotationClass"
 	 value="org.apache.ibatis.annotations.Mapper"></property>
 </bean> 
-   <!-- 4.配置事务代理，编程式事务 -->
+
+
+
+<!-- 4.配置事务代理，编程式事务 -->
 <!-- 注意：Mybatis是的spring jdbc的事务代理 -->
 <!-- 创建事务代理对象 -->
 <bean name="tx" 
