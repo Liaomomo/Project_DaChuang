@@ -10,13 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class TM_Controller {
      
 	
-	
 	// TODO Auto-generated method stub
 	@RequestMapping("/index")
 	@ResponseBody
     private ModelAndView test() {
 		
 		ModelAndView mv = new ModelAndView("/index.jsp");
+		String str = "test";
 		return mv;
 		
          
