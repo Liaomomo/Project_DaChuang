@@ -1,0 +1,150 @@
+body{
+	background-color: #fff;
+}
+.cd-layout{
+	width: 100%;
+	/*max-width: 640px;
+	min-width: 300px; */
+	margin: 0 auto;
+	position: relative;
+}
+.cd-header{
+	position: fixed;
+	left: 0;
+	top: 0;
+	height:60px;
+	width:100%;
+	
+}
+.cd-header>.cd-header-box{
+	width:100%;
+	margin: 0 auto;
+	background-color:#fafafa ;
+	height:60px;
+	position: relative;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 0 1px #e0e0e0;
+}
+.cd-header>.cd-header-box>a{
+	line-height: 60px;
+	font-size: 30px;
+	font-weight: 700;
+}
+.cd-header>.cd-header-box>span{
+	line-height: 60px;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing:20px;
+}
+.mar-l10{
+	margin-left: 10px;
+}
+.mar-r10{
+	margin-right:10px;
+}
+/*顶部*/
+.mainwrap
+{
+	/*display: inline-block;*/
+	width:100%;
+	height:30%;
+	margin-top: 60px;
+}
+.ways{
+	width:100%;
+	height:40px;
+	border-bottom: 1px solid #ccc;
+}
+.info{
+	width:80%;
+	height:60%;
+	margin-left: 10%;
+	position: relative;
+}
+.l-name,.l-ms{
+	width: 49%;
+	height:40px;
+	display: inline-block;
+	text-align: center;
+}
+.l-name>span,
+.l-ms>span{
+	line-height: 40px;
+}
+/*登录方法部分结束*/
+.u-name,
+.password,
+.test
+{
+	font-size: 16px;
+	width: 60px;
+	position: absolute;
+	height:30px;
+	line-height: 30px;
+}
+.user-n,
+.user-p,
+.user-t
+{
+	margin-top: 10px;
+	border-bottom: 1px solid #ccc;
+}
+input{
+	margin-left: 60px;
+	width:70%;
+	height:30px;
+	outline:none;
+}
+
+.info>form>div>img{
+	width: 30px;
+	height:30px;
+	position: absolute;
+	right: 0;
+}
+.btn>#denglu{
+	display: block;
+	margin-top: 30px;
+	width: 100%;
+	height:30px;
+	padding: 0px;
+	margin-left: 0px;
+}
+.btn>#zuce{
+	margin-top: 10px;
+	width: 100%;
+	height:30px;
+	display: block;
+	padding: 0px;
+	margin-left: 0px;
+}
+/*结束*/
+.other{
+	margin-top: 30px;
+}
+.title{
+	margin-top: 60px;
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+}
+.olw{
+	margin-top: 20px;
+	text-align: center;
+}
+.olw>a>img{
+	width: 50px;
+	height:50px;
+}
+.wc{
+	margin-right: 40px;
+}
+.xin{
+	margin-left: 40px;
+}
+.safe{
+	margin-top: 30px;
+	text-align: center;
+}

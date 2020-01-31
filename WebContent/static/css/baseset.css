@@ -1,0 +1,54 @@
+*,
+::before,
+::after,
+{
+	margin: 0;
+	padding:0;
+	-webkit-tap-highlight-color:transparent;
+	/*盒子以边框计算宽度*/
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;  /*Firefox */
+	-webkit-box-sizing:border-box;  /*Safari */
+}	
+body{
+	font-size:14px;
+	font-family: "MicroSoft Yahei",sans-serif;
+	color: #333;
+	background-color: #f4f4f4;
+	margin: 0 auto;
+	max-width: 640px;
+	min-width: 320px;
+	
+}
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+input{
+	-webkit-appearance:none;
+	border: 0;
+}
+
+.f_left{
+	float: left;
+}
+.f_right{
+	float: right;
+}
+.clearf::before,
+.clearf::after
+{
+	content: "";
+	height: 0;
+	line-height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+ul,ol{
+	list-style: none;
+}
+/*初始化完毕

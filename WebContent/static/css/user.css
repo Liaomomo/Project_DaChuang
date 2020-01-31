@@ -1,0 +1,152 @@
+.cd-layout{
+	width: 100%;
+	/*max-width: 640px;
+	min-width: 300px; */
+	margin: 0 auto;
+	position: relative;
+}
+.cd-header{
+	position: fixed;
+	left: 0;
+	top: 0;
+	height:60px;
+	width:100%;
+	
+}
+.cd-header>.cd-header-box{
+	width:100%;
+	/*max-width: 640px;
+	min-width: 300px;*/
+	margin: 0 auto;
+	background:	#708090;
+	height:60px;
+	position: relative;
+}
+
+.cd-layout>.cd-header>.cd-header-box>.title{
+	width:200px;
+	height:60px;
+	float: left;
+}
+.cd-layout>.cd-header>.cd-header-box>.title>img{
+	width:35px;
+	height:35px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.cd-layout>.cd-header>.cd-header-box>.title>span
+{
+	line-height: 60px;
+	font-size:18px;
+	font-weight: 700;
+	color: 	#F5FFFA;
+	display: inline-block;
+	margin-left: 5px;
+	vertical-align:top;
+	letter-spacing: 5px;
+}
+.cd-header>.cd-header-box>a{
+	line-height: 60px;
+}
+.cd-header>.cd-header-box>a>img{
+	width:60px;
+	height:60px;
+}
+.mar-l10{
+	margin-left: 10px;
+}
+.mar-r10{
+	margin-right:10px;
+}
+/*底部导航栏*/
+.cd-layout>.bottom-nav{
+	width:100%;
+	bottom: 0;
+	height:50px;
+	position: fixed;
+	left: 0;
+	background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.w-50{
+	width:50%;
+	display: block;
+}
+.w-50>img{
+	display: block;
+	width:50px;
+	height:50px;
+	margin-left: 40%;
+}
+
+
+.cd-layout>.bottom-nav>a
+{
+	width:50%;
+	line-height: 50px;
+	font-size:16px;
+	font-weight: bold;
+	color: #eee;
+	text-align:center;
+}
+/*用户区*/
+.user-bg{
+	width:100%;
+/*	max-width: 640px;
+	min-width: 300px;*/
+	margin: 0 auto;
+	height:150px;
+	background-image: url(bg1.jpg);
+	
+	background-size: 100%;
+	border-bottom: 1px solid #ccc;
+	margin-top: 60px;
+	box-shadow: 0 0 1px #e0e0e0;
+}
+.user-bg>.user-ph>img{
+	border:1px solid #ccc;
+	box-shadow: 0 0 1px #e0e0e0;
+	width:80px;
+	height:80px;
+	border-radius: 50%;
+	margin-top: 55px;
+	margin-left: 30px;
+}
+.user{
+	width:100%;
+	/*max-width: 640px;
+	min-width: 300px;*/
+	margin: 0 auto;
+	
+	height:65px;
+	border-bottom: 1px solid #ccc;
+	background-color:#ffffff;
+	margin-top:-55px;
+	box-shadow: 0 0 1px #e0e0e0;
+	z-index: 1000;
+}
+/*主要功能区*/
+.cd-layout>.mainfoundation{
+	width:100%;
+}
+.cd-layout>.mainfoundation>div{
+	width:100%;
+	/*max-width: 640px;
+	min-width: 300px;*/
+	margin: 0 auto;
+	height:50px;
+	line-height: 50px;
+	border-bottom: 1px solid #D3D3D3;
+	background-color:#ffffff;
+	position: relative;
+	font-size: 16px;
+}
+.cd-layout>.mainfoundation>div>img{
+	width:30px;
+	height:30px;
+	margin:10px;
+	vertical-align: middle;
+}
