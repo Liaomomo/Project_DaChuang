@@ -24,7 +24,7 @@ public class logic_service_imp implements logic_service {
 	//条码生成  zxingCodeCreate("http://www.baidu.com", 300, 300, "D:/qrcode.jpg", "jpg");
 	public void CodeCreate(String text, int width, int height, String outPutPath, String imageType) {
 		// TODO Auto-generated method stub
-		System.out.println(text+width+height+outPutPath+imageType);
+        // System.out.println(text+width+height+outPutPath+imageType);
 		//二维码颜色  
 	    final int BLACK = 0xFF000000;  
 	    //二维码颜色  

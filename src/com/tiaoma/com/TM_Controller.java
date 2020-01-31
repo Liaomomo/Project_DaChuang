@@ -35,40 +35,34 @@ public class TM_Controller {
 		return mv;
 	  
 	  }
-      //条码生成
-	  @RequestMapping("/CreateCode")
-	  private ModelAndView CreateCode(HttpServletRequest request){
+       //条码生成  ${info}
+	   @RequestMapping("/CreateCode")
+	   private ModelAndView CreateCode(HttpServletRequest request){
 		
 		String text = request.getParameter("text");
-
 		logic_service.CodeCreate(text, 300, 400, "D:/JAVA/Project_DaChuang/WebContent/TM_img/frist_code.jpg", "jpg");
-	    ModelAndView mv = new ModelAndView("/index.jsp");
+	    ModelAndView mv = new ModelAndView("/TM_HTML/Html_code.jsp");
+	    mv.addObject("info",text);
+	    mv.addObject("img_url","./TM_img/frist_code.jpg");
+		return mv;
+	  
+	  }
+	  
+	   //动态条码生成 
+	   @RequestMapping("/Create_Dynamic_Code")
+	   private ModelAndView Create_Dynamic_Code(HttpServletRequest request){
+		
+		String text = request.getParameter("text");
+		logic_service.CodeCreate(text, 300, 400, "D:/JAVA/Project_DaChuang/WebContent/TM_img/frist_code.jpg", "jpg");
+	    ModelAndView mv = new ModelAndView("/TM_HTML/Html_code.jsp");
+	    mv.addObject("info",text);
+	    mv.addObject("img_url","./TM_img/frist_code.jpg");
 		return mv;
 	  
 	  }
 	  
 	  
-	  
-    //	用户注册
-	@RequestMapping(value="/registe",method=RequestMethod.POST)
-	@ResponseBody
-	private String registe(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-        //获取用户数据
-		String name = request.getParameter("name");
-		String age = request.getParameter("age");
-		String sex = request.getParameter("sex");
-		String info="name="+name+"    age="+age+"  sex="+sex;
-		System.out.println(info);
-        //封装到user
-		User user = new User(name,age,sex);
-		
-		user_service.user_registe(user);
-		
-		return info;
-        
-	}
-	
+   
  
 	
 	
