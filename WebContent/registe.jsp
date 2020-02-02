@@ -4,32 +4,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0"/>
+<title>注册</title>
+<link rel="stylesheet" href="./static/css/baseset.css">
+<link rel="stylesheet" href="./static/css/register.css">
 </head>
+
 <body>
-<h3>用户信息编辑页面</h3>
-<form method="post" action="./registe.do" >
-    <table>
-        <tr>
-            <td>姓名:</td>
-            <td><input name="name" value=''/></td>
-        </tr>
-        <tr>
-             <td>年龄:</td>
-             <td><input name="age" value=''/></td>
-        </tr>
-        <tr>
-             <td>性别:</td>
-             <td><input name="sex" value=''/></td>
-        </tr>
-       
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="提交变更"/>
-            </td>
-        </tr>
-    </table>
-</form>
+    <div class="cd-layout">
+		<!-- 顶部导航栏 -->
+		<header class="cd-header clearf">
+			<div class="cd-header-box clearf">
+				<a href="login.html" class="f_left mar-l10"><</a>
+				<span>注册</span>
+			</div>
+		</header>
+		<!-- info -->
+		<div class="wrap">
+				<form method="post" action="./registe.do" >
+					<div class="u-name">
+						<div>用&nbsp;户&nbsp;名</div>
+						<input name="username"type="text" placeholder="请输入用户名">
+					</div>
+					<div class="u-pas">
+						<div>密&emsp;&emsp;码</div>
+						<input name="password" type="text" placeholder="请输入密码">
+					</div>
+					<div class="u-repas">
+						<div>重复密码</div>
+						<input name="repassword" type="text" placeholder="请再次输入密码">
+					</div>
+					<div class="u-email">
+						<div>电子邮箱</div><input name="email" type="text" placeholder="请输入常用的电子邮箱">
+					</div>
+					<div class="u-phone">
+						<div>手机号码</div>
+						<input name="phone" type="text" placeholder="请输入手机号">
+					</div>
+					<div class="submit">
+						<input type="submit" value="注&emsp;册">
+					</div>
+				</form>
+		</div>
+	</div>
 </body>
 
 </html>

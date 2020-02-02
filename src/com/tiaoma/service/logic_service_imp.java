@@ -1,13 +1,16 @@
 package com.tiaoma.service;
 
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.zxing.BarcodeFormat;
@@ -15,10 +18,15 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.tiaoma.mapper.Dymanic_Code_Mapper;
+import com.tiaoma.mapper.UserMapper;
 
 @Service
 public class logic_service_imp implements logic_service {
      
+	@Autowired
+	private Dymanic_Code_Mapper  Dymanic_Code;
+	
 	
 	@Override
 	//条码生成  zxingCodeCreate("http://www.baidu.com", 300, 300, "D:/qrcode.jpg", "jpg");
@@ -65,6 +73,21 @@ public class logic_service_imp implements logic_service {
 		}
 		
 	}
+
+	@Override
+	public List<Map>  change_text(int code_id, String text) {
+		// TODO Auto-generated method stub
+		
+		return Dymanic_Code.change_text(code_id, text);
+	}
+
+	@Override
+	public List<Map> Get_code_text(int code_id) {
+		// TODO Auto-generated method stub
+		return Dymanic_Code.Get_code_text(code_id);
+	}
+
+	
 
 
 }

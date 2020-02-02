@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tiaoma.mapper.UserMapper">
+<mapper namespace="com.tiaoma.mapper.Dymanic_Code_Mapper">
 
-
-
-<select  id="user_registe"  parameterType="com.tiaoma.model.User">  
-        insert into user(name,age,sex)
-        values (#{name},#{age},#{sex}) 
-    
-</select >  
 
 <select  id="change_text"   parameterType="java.util.Map">  
         update code set text=(#{text}) where code_id= (#{code_id})
     
+</select > 
+
+
+<select  id="Get_code_text"   parameterType="java.util.Map" resultType="java.util.HashMap">       
+        select text from code where code_id= (#{code_id})
 </select > 
 
 

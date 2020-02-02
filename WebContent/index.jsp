@@ -1,76 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0"/>
-	<title>扫一扫首页</title>
-	<link rel="stylesheet" href="./static/css/baseset.css">
-	<link rel="stylesheet" href="./static/css/create.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0"/>
+<title>主页</title>
+<link rel="stylesheet" href="static/css/baseset.css">
+<link rel="stylesheet" href="static/css/Home.css">
 </head>
-<body>
-	<div class="cd-layout">
+
+  
+  <body>
+    <div class="cd-layout">
 		<!-- 顶部导航栏 -->
 		<header class="cd-header clearf">
 			<div class="cd-header-box clearf">
-				<a href="index.jsp" class="f_left mar-l10"><</a>
-				<span>生成二维码</span>
+				<a href="#" class="f_left mar-l10"><img class="pic"src="static/imgs/Home/image.png" alt="相册"></a>
+				<a href="#" class="f_right mar-r10" alt="设置"><img src="static/imgs/Home/settings.png" ></a>
 			</div>
 		</header>
-		<!-- 编辑栏 -->
-		 	<div class="text-wrap">
-				<div class="toolbar">
-					<div class="toolbar1 clearf">
-						<a href="#" ><img src="create/pics.png" alt="图片"></a>
-						<a href="#" ><img src="create/scene.png" alt="视频"></a>
-						<a href="#" ><img class="selected" src="create/notebook.png" alt="文字"></a>
-					</div>
-					
-					<div class="toolbar2 clearf">
-						<a href="#" ><img src="create/mic-ph.png" alt="语音"></a>
-						<a href="#" ><img src="create/link.png" alt="网页链接"></a>
-						<a href="#" ><img src="create/wc.jpg" alt="微信号"></a>
-<!-- 						<ahref="#" ><img src="card.png" alt="名片"></a>
- -->					</div>
-					
-				</div>
-				
-				<div class="textArea-box clearf">
-					
-					<form  action="./CreateCode.do" method="post" id="formid">
-						<textarea id="text-content" class="main_text " name="text"  placeholder="请输入内容" ></textarea>
-						
-					</form>
-				
-				
-				</div>
-				
-		 </div>
-		<!-- 最底部一键生成 -->
+		<!-- user用户 -->
+		<div class="user-bg">
+			<a href="#" class="user-ph"><img src="static/imgs/Home/user-ph.png" alt=""></a>
+		</div>
+		<div class="user"></div>
+		<!-- 主要功能 -->
+		<div class="codemain">
+			<li><a href="./Scan.do"  class="scan"><img src="static/imgs/Home/scan.jpg" alt=""></a></li>
+			<li><a href="./BarCode.do"  class="madecode"><img src="static/imgs/Home/code.png"  ></a></li>
+		</div >
+		<!-- 杂七杂八的功能，收藏 历史 反馈 帮助 -->
+			
+		<div class="others">
+			
+				<li><a href="#" class="favorites"><img src="static/imgs/Home/favorite.png" alt="收藏夹"></a></li>
+				<li><a href="#" class="history"><img src="static/imgs/Home/history.png" alt="历史记录"></a></li>
+				<li><a href="#" class="feedback"><img src="static/imgs/Home/email.png" alt="反馈"></a></li>
+				<li><a href="#" class="help"><img src="static/imgs/Home/question.png" alt="帮助手册"></a></li>
+			
+		</div>
+		
+		<!-- 底部导航栏 -->
 		<div class="bottom-nav clearf">
-			<a href="index.jsp" class="f_left w-50 clearf"><img src="create/home.png" alt="主页"></a>
-			<button class="clearf"  id="jitiao" style="cursor:pointer"><img src="create/code.png" alt="二维码生成按钮"><b>一键生成</span></button>
- 			<a href="user.jsp" class="f_right w-50  "><img class="icon-user" src="create/user.png" alt="个人中心"></a>
+			<a href="Home.html" class="f_left w-50 clearf"><img src="static/imgs/Home/home.png" alt="主页"></a>
+			<a href="user.html" class="f_right w-50  "><img src="static/imgs/Home/user.png" alt="个人中心"></a>
 		</div>
 	</div>
-</body>
-
-<script>
-	
-	var ojb = document.getElementById("jitiao");
-	var ojb1 = document.getElementById("text-content");  
-	
-	ojb.onclick=function()
-	{   
-		
-		if(ojb1.value!="")
-		{   
-		    document.getElementById("formid").submit(); 
-		}
-		
-	}
-	
-	
-</script>
+  </body>
 </html>
