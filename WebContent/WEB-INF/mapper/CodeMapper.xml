@@ -11,8 +11,14 @@
 
 
 <select  id="Get_code_text"   parameterType="java.util.Map" resultType="java.util.HashMap">       
-        select text from code where code_id= (#{code_id})
+        select * from code where code_id= (#{code_id})
 </select > 
+
+<select  id="create_Dy_code"  parameterType="com.tiaoma.model.Dy_Code">  
+        insert into code(code_id,user_id,html_url,img_url,text)
+        values (#{code_id},#{user_id},#{html_url},#{img_url},#{text}) 
+    
+</select >  
 
 
 

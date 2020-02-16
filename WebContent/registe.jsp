@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0"/>
 <title>注册</title>
-<link rel="stylesheet" href="./static/css/baseset.css">
-<link rel="stylesheet" href="./static/css/register.css">
+<link rel="stylesheet" href="../static/css/baseset.css">
+<link rel="stylesheet" href="../static/css/register.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 		</header>
 		<!-- info -->
 		<div class="wrap">
-				<form method="post" action="./registe.do" >
+				<form method="post" action="../user/registe.do" >
 					<div class="u-name">
 						<div>用&nbsp;户&nbsp;名</div>
 						<input name="username"type="text" placeholder="请输入用户名">

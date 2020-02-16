@@ -19,8 +19,14 @@ public class User_Service_imp implements User_Service {
 	@Override
 	public User user_registe(User user) {
 		// TODO Auto-generated method stub
-		System.out.println(user.getName()+"11");
+		
 		return usermapper.user_registe(user);
+	}
+
+	@Override
+	public List<Map> user_login(String username) {
+		// TODO Auto-generated method stub
+		return usermapper.user_login(username);
 	}
 
 }

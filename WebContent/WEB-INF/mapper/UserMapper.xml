@@ -4,10 +4,9 @@
 <mapper namespace="com.tiaoma.mapper.UserMapper">
 
 
-
 <select  id="user_registe"  parameterType="com.tiaoma.model.User">  
-        insert into user(name,age,sex)
-        values (#{name},#{age},#{sex}) 
+        insert into user(username,password,email,phone)
+        values (#{username},#{password},#{email},#{phone}) 
     
 </select >  
 
@@ -15,6 +14,13 @@
         update code set text=(#{text}) where code_id= (#{code_id})
     
 </select > 
+
+<select  id="user_login"   parameterType="java.util.Map" resultType="java.util.HashMap">  
+        select * from user where username=(#{username})
+    
+</select > 
+
+
 
 
 

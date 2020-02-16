@@ -21,7 +21,7 @@
 		</header>
 		<!-- 用户区 -->
 		<div class="user-bg">
-			<a href="login.html" class="user-ph"><img src="static/imgs/user/user-ph.png" alt="">登录/注册</a>
+			<a href="../page/login.do" class="user-ph"><img src="static/imgs/user/user-ph.png" alt="">登录/注册</a>
 		</div>
 		<div class="user"></div>
 		<!-- 主要功能 -->
@@ -36,8 +36,8 @@
 		</div>
 		<!-- 底部导航栏 -->
 		<div class="bottom-nav clearf">
-			<a href="Home.html" class="f_left w-50 clearf"><img src="static/imgs/user/home.png" alt="主页"></a>
-			<a href="user.html" class="f_right w-50  "><img src="static/imgs/user/user.png" alt="个人中心"></a>
+			<a href="../page/index.do" class="f_left w-50 clearf"><img src="static/imgs/user/home.png" alt="主页"></a>
+			<a href="../page/login.do" class="f_right w-50  "><img src="static/imgs/user/user.png" alt="个人中心"></a>
 		</div>
 	</div>
   </body>

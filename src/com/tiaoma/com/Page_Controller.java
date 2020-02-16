@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping
+@RequestMapping("/page")
 public class Page_Controller {
 	
 	
@@ -13,7 +13,7 @@ public class Page_Controller {
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		
-		ModelAndView modelAndView = new ModelAndView("index.jsp");
+		ModelAndView modelAndView = new ModelAndView("../index.jsp");
 		return modelAndView;
 		
 
@@ -24,7 +24,7 @@ public class Page_Controller {
 	@RequestMapping("/BarCode")
 	public ModelAndView BarCode() {
 		
-		ModelAndView modelAndView = new ModelAndView("Barcode.jsp");
+		ModelAndView modelAndView = new ModelAndView("../Barcode.jsp");
 		return modelAndView;
 		
 
@@ -35,11 +35,28 @@ public class Page_Controller {
 	@RequestMapping("/Scan")
 	public ModelAndView Scan() {
 		
-		ModelAndView modelAndView = new ModelAndView("Scan.jsp");
+		ModelAndView modelAndView = new ModelAndView("../Scan.jsp");
 		return modelAndView;
 		
-
 	}
+	//用户登录
+	@RequestMapping("/login")
+	public ModelAndView login() {
+		
+		ModelAndView modelAndView = new ModelAndView("../login.jsp");
+		return modelAndView;
+		
+	}
+	//用户注册
+	@RequestMapping("/register")
+	public ModelAndView register() {
+		
+		ModelAndView modelAndView = new ModelAndView("/registe.jsp");
+		return modelAndView;
+		
+	}
+	
+	
 	
 	
 

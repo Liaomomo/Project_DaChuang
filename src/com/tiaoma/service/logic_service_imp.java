@@ -20,6 +20,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.tiaoma.mapper.Dymanic_Code_Mapper;
 import com.tiaoma.mapper.UserMapper;
+import com.tiaoma.model.Dy_Code;
 
 @Service
 public class logic_service_imp implements logic_service {
@@ -82,9 +83,15 @@ public class logic_service_imp implements logic_service {
 	}
 
 	@Override
-	public List<Map> Get_code_text(int code_id) {
+	public List<Map> Get_code_text(String code_id) {
 		// TODO Auto-generated method stub
 		return Dymanic_Code.Get_code_text(code_id);
+	}
+
+	@Override
+	public Dy_Code create_Dy_code(Dy_Code code) {
+		// TODO Auto-generated method stub
+		return Dymanic_Code.create_Dy_code(code);
 	}
 
 	

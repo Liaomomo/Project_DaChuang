@@ -21,5 +21,6 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd">
     <mvc:annotation-driven></mvc:annotation-driven>
     <mvc:default-servlet-handler/> <!-- 进行筛查 -->
     <mvc:resources mapping="/static/**" location="/static/" cache-period="31556926"/>
+    
 
 </beans>
