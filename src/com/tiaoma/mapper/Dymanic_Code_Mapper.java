@@ -20,4 +20,7 @@ public interface Dymanic_Code_Mapper {
 		//创建动态条码
 		public Dy_Code  create_Dy_code(Dy_Code code);
 		
+		//条码管理
+		public List<Map>  manager_code (@Param("user_id") String user_id);
+		
 }

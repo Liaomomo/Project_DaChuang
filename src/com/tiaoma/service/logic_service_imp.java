@@ -31,7 +31,7 @@ public class logic_service_imp implements logic_service {
 	
 	@Override
 	//条码生成  zxingCodeCreate("http://www.baidu.com", 300, 300, "D:/qrcode.jpg", "jpg");
-	public void CodeCreate(String text, int width, int height, String outPutPath, String imageType) {
+	public boolean CodeCreate(String text, int width, int height, String outPutPath, String imageType) {
 		// TODO Auto-generated method stub
         // System.out.println(text+width+height+outPutPath+imageType);
 		//二维码颜色  
@@ -64,14 +64,20 @@ public class logic_service_imp implements logic_service {
 					 outPutImage.createNewFile();
 			//5、将二维码写入图片  
 			 ImageIO.write(image, imageType, outPutImage);
+			 
+			 
+			 return true;
 		} catch (WriterException e) {
 			 e.printStackTrace();
 			 System.out.println("二维码生成失败");
+			 return false;
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("生成二维码图片失败");
+			return false;
 		}
+		
 		
 	}
 
@@ -92,6 +98,15 @@ public class logic_service_imp implements logic_service {
 	public Dy_Code create_Dy_code(Dy_Code code) {
 		// TODO Auto-generated method stub
 		return Dymanic_Code.create_Dy_code(code);
+	}
+
+	@Override
+	/**
+	 * 条码管理
+	 */
+	public List<Map> manager_code(String user_id) {
+		// TODO Auto-generated method stub
+		return Dymanic_Code.manager_code(user_id);
 	}
 
 	

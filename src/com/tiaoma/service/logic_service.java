@@ -14,7 +14,7 @@ import com.tiaoma.model.Dy_Code;
 public interface logic_service {
 	
     //生成条码
-	public void CodeCreate(String text, int width, int height, String outPutPath, String imageType);
+	public boolean CodeCreate(String text, int width, int height, String outPutPath, String imageType);
     
 	//生成动态条码
 	public Dy_Code  create_Dy_code(Dy_Code code);
@@ -24,6 +24,9 @@ public interface logic_service {
 	
 	//获得条码内容
 	public List<Map>  Get_code_text(@Param("code_id") String code_id);
+	
+	//条码管理
+	public List<Map>  manager_code (@Param("user_id") String user_id);
 	
    
 }

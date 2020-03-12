@@ -1,7 +1,13 @@
 package com.tiaoma.com;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -43,7 +49,23 @@ public class Page_Controller {
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		
-		ModelAndView modelAndView = new ModelAndView("../login.jsp");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		
+		HttpSession session=request.getSession();
+		
+		Object  name = session.getAttribute("name");
+		
+		System.out.println("name="+name);
+		
+		ModelAndView modelAndView;
+		
+		if(name!=null){
+			 modelAndView = new ModelAndView("../user.jsp");
+		}else{
+			 modelAndView = new ModelAndView("../login.jsp");
+		}
+		
+		
 		return modelAndView;
 		
 	}
@@ -51,7 +73,20 @@ public class Page_Controller {
 	@RequestMapping("/register")
 	public ModelAndView register() {
 		
-		ModelAndView modelAndView = new ModelAndView("/registe.jsp");
+		ModelAndView modelAndView = new ModelAndView("../registe.jsp");
+		return modelAndView;
+		
+	}
+	
+	//¶¯Ì¬ÌõÂë
+	@RequestMapping("/dy_code")
+	public ModelAndView dy_code(HttpServletRequest req) {
+		
+		String text = req.getParameter("text");
+		System.out.println(text);
+		ModelAndView modelAndView = new ModelAndView("../Dy_Barcode.jsp");
+		
+		modelAndView.addObject("text", text);
 		return modelAndView;
 		
 	}

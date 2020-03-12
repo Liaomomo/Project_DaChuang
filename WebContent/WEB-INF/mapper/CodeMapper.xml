@@ -15,11 +15,13 @@
 </select > 
 
 <select  id="create_Dy_code"  parameterType="com.tiaoma.model.Dy_Code">  
-        insert into code(code_id,user_id,html_url,img_url,text)
-        values (#{code_id},#{user_id},#{html_url},#{img_url},#{text}) 
+        insert into code(code_id,user_id,title,html_url,img_url,text,create_date)
+        values (#{code_id},#{user_id},#{title},#{html_url},#{img_url},#{text},#{create_date}) 
     
-</select >  
+</select >
 
-
-
+<select  id="manager_code"   parameterType="java.util.Map" resultType="java.util.HashMap">       
+        select * from code where user_id= (#{user_id})
+</select > 
+  
 </mapper>

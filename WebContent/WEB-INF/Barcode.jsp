@@ -71,12 +71,22 @@
 	}
 	
 	dymantis_create.onclick=function(){
+		var username = '<%= session.getAttribute("name")%>';
+		form_sub.action='../code/Create_Dynamic_Code.do';
+		 
+		if(text_content.value!="" && username!=null ){  
+			form_sub.submit(); 
+		}else if(username==null){
+			alert("请登录");
+		}else if(text_content.value=="")
+		{
+			alert("请输入内容");
+		}
 		
-		window.location = "../page/dy_code.do?"+"text="+text_content.value;
+		
+		
 		
 	}
-	
-	
 	
 	
 	

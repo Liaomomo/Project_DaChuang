@@ -28,7 +28,6 @@
 			<a href="./login.do" class="user-ph"><img src="../static/imgs/Home/user-ph.png" alt=""></a>
 			<span id="user_name">
              
-             
             </span>
 		</div>
 		<div class="user"></div>
@@ -60,7 +59,9 @@
     <script type="text/javascript">
     $(function(){
         var username = '<%= session.getAttribute("name")%>';
-        if(username!=null){
+        if(username==null || username==''){
+        	document.getElementById("user_name").innerHTML ="";
+        }else{
         	document.getElementById("user_name").innerHTML = username;
         }
      })

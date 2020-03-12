@@ -5,20 +5,33 @@ public class Dy_Code {
 	
 	String code_id;
 	int user_id;
+	String  title;
 	String  html_url;
 	String  img_url;
 	String  text;
+	String create_date;
 	
 	
-	public Dy_Code(String code_id, int user_id, String html_url, String img_url, String text) {
+	
+	
+	
+	public Dy_Code(String code_id, int user_id, String title, String html_url, String img_url, String text,
+			String create_date) {
 		super();
 		this.code_id = code_id;
 		this.user_id = user_id;
+		this.title = title;
 		this.html_url = html_url;
 		this.img_url = img_url;
 		this.text = text;
+		this.create_date = create_date;
 	}
-	
+	public String getCreate_date() {
+		return create_date;
+	}
+	public void setCreate_code(String create_date) {
+		this.create_date = create_date;
+	}
 	public String getCode_id() {
 		return code_id;
 	}
@@ -49,6 +62,13 @@ public class Dy_Code {
 	public void setText(String text) {
 		this.text = text;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	
 
 }

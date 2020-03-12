@@ -3,6 +3,7 @@ package com.tiaoma.com;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -49,36 +50,28 @@ public class TM_Controller {
 		String text = request.getParameter("text");
 	    //获取时间戳
 		String code_img = String.valueOf(System.currentTimeMillis());
-		String code_img_url="D:/JAVA/Project_DaChuang/WebContent/TM_img/"+code_img+".jpg";
-		
-		logic_service.CodeCreate(text, 250, 250,code_img_url, "jpg");
+		String code_img_url="D:/JAVA/Project_DaChuang/WebContent/Code_img/statis_code/"+code_img+".jpg";
+		boolean success = logic_service.CodeCreate(text, 250, 250,code_img_url, "jpg");
 		
 	    ModelAndView mv = new ModelAndView("/detail.jsp");
 	    mv.addObject("info",text);
 	    
 	    //判断是否生成图片
-	    File file ;
-	  
-	    while(true){
-	    	file = new File(code_img_url);
-	    	if(file.exists()){
-	    		mv.addObject("img_url","../TM_img/"+code_img+".jpg");
-	    		System.out.println(file.exists());
-	    		try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-	    	}
-
+	    if(success){
+	    	  try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	  mv.addObject("img_url","../Code_img/statis_code/"+code_img+".jpg");
+	    	  return mv;
+	    }else{
+	    	return mv;
 	    }
-	    
-	    return mv;
-
-	  }
 	  
+	 }
+	 
 	   
 	   /**
 	    * 
@@ -88,25 +81,36 @@ public class TM_Controller {
 	   @RequestMapping("/Create_Dynamic_Code")
 	   private ModelAndView Create_Dynamic_Code(HttpServletRequest request){
 		
+		
+		//获取标题
+		String title = request.getParameter("title");  
+        
+		//获取文本
 		String text = request.getParameter("text");
 		
 	    //获取时间戳
 		String TimeMillis = String.valueOf(System.currentTimeMillis());
 		String code_id = TimeMillis;
-		String code_img_url="D:/JAVA/Project_DaChuang/WebContent/TM_img/"+TimeMillis+".jpg";
+		String code_img_url="D:/JAVA/Project_DaChuang/WebContent/Code_img/dynamic_code/"+TimeMillis+".jpg";
+		
+		//获取年月日
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String create_date = dateFormat.format(date);
+		
 		
 		//获取用户id 
 		HttpSession session = request.getSession();
         int user_id =  (int) session.getAttribute("user_id");  
         
         //生成动态链接
-        String html_url = "http://192.168.1.3:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
+        String html_url = "http://192.168.0.6:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
 		logic_service.CodeCreate(html_url, 250, 250,code_img_url, "jpg");
 		
 		//图片的相对路径
-		String img_url = "../TM_img/"+code_id+".jpg";
+		String img_url = "../Code_img/dynamic_code/"+code_id+".jpg";
 		//生成动态条码模型
-		Dy_Code code = new Dy_Code(code_id,user_id,html_url,img_url,text);
+		Dy_Code code = new Dy_Code(code_id,user_id,title,html_url,img_url,text,create_date);
 		
 		//数据入库
 		logic_service.create_Dy_code(code);
@@ -114,12 +118,12 @@ public class TM_Controller {
 	    ModelAndView mv = new ModelAndView("/detail.jsp");
 	    mv.addObject("info",text);
 	    try {
-			Thread.sleep(3000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    mv.addObject("img_url","../TM_img/"+code_id+".jpg");
+	    mv.addObject("img_url","../Code_img/dynamic_code/"+code_id+".jpg");
 		return mv;
 	  
 	  }
@@ -133,7 +137,7 @@ public class TM_Controller {
 	   private ModelAndView view_Dynamic_Code(HttpServletRequest request){
 		
 		String code_id = request.getParameter("token");
-		System.out.println(code_id);
+		
 		
 	    ModelAndView mv = new ModelAndView("/detail.jsp");
 	    
@@ -172,22 +176,12 @@ public class TM_Controller {
 	   @RequestMapping("/Manager_code")
 	   public ModelAndView Manager_code(HttpServletRequest request){
 		   
-		String toker=request.getParameter("toker");
+		String user_id=request.getParameter("user_id");
 		
-		System.out.println(toker);
+		List<Map> list = logic_service.manager_code(user_id);
 		
-		List<Map> list = logic_service.Get_code_text(toker);
-		
-		System.out.println(list+"zhixingl");
-		
-		String text = (String) list.get(0).get("text");
-		
-		System.out.println(text);
-		
-		ModelAndView modelAndView = new ModelAndView("/TM_HTML/Dymanic_Code.jsp");
-		
-		modelAndView.addObject("info",text);
-		modelAndView.addObject("img_url","./TM_img/Dymanic_Code.jpg");
+		ModelAndView modelAndView = new ModelAndView("/manager_code.jsp");
+		modelAndView.addObject("info",list);
 		
 		return modelAndView;
 		

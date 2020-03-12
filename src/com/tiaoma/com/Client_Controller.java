@@ -47,18 +47,13 @@ public class Client_Controller {
 	        String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
-			System.out.println(username);
+		
 			
 			//数据库请求数据（获得密码）
 			List<Map> list = user_service.user_login(username);
 			String password_request = (String) list.get(0).get("password");
 			
 			int user_id =  (int) list.get(0).get("user_id");
-			
-//			list.clear();
-//			Map map = new HashMap() ;
-//			map.put("username", username);
-//			list.add(map);
 			
 			
 			if(password_request.equals(password)){
