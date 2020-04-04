@@ -5,7 +5,7 @@
 	margin: 0;
 	padding:0;
 	-webkit-tap-highlight-color:transparent;
-	/*盒子以边框计算宽度*/
+	/*鐩掑瓙浠ヨ竟妗嗚绠楀搴�*/
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;  /*Firefox */
 	-webkit-box-sizing:border-box;  /*Safari */
@@ -48,4 +48,13 @@ input{
 ul,ol{
 	list-style: none;
 }
-/*初始化完毕
+.cd-layout>.bottom-nav {
+    width: 100%;
+    bottom: 2%;
+    height: 10%;
+    position: fixed;
+    left: 0;
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #f8f8f8;
+}

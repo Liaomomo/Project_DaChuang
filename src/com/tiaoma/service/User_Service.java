@@ -11,9 +11,9 @@ import com.tiaoma.model.User;
 @Service
 public interface User_Service {
 	
-    //用户注册接口
+    //鐢ㄦ埛娉ㄥ唽鎺ュ彛
 	User  user_registe(User user);
-	//用户登录接口
+	//鐢ㄦ埛鐧诲綍鎺ュ彛
 	List<Map>  user_login(@Param("username") String username);
 
 }

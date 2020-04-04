@@ -13,20 +13,24 @@ import com.tiaoma.model.Dy_Code;
 @Service
 public interface logic_service {
 	
-    //Éú³ÉÌõÂë
+    //ç”Ÿæˆæ¡ç 
 	public boolean CodeCreate(String text, int width, int height, String outPutPath, String imageType);
     
-	//Éú³É¶¯Ì¬ÌõÂë
+	//ç”ŸæˆåŠ¨æ€æ¡ç 
 	public Dy_Code  create_Dy_code(Dy_Code code);
 		
-	//ĞŞ¸ÄÌõÂë
+	//ä¿®æ”¹æ¡ç 
 	public List<Map>  change_text(@Param("code_id") int code_id,@Param("text") String text);
 	
-	//»ñµÃÌõÂëÄÚÈİ
+	//è·å¾—æ¡ç å†…å®¹
 	public List<Map>  Get_code_text(@Param("code_id") String code_id);
 	
-	//ÌõÂë¹ÜÀí
-	public List<Map>  manager_code (@Param("user_id") String user_id);
+	//æ¡ç ç®¡ç†
+	public List<Map>  manager_code (@Param("user_id") int user_id);
+	
+	//åˆ é™¤æ¡ç 
+	public List<Map>  delete_code (@Param("code_id") String code_id);
+	
 	
    
 }

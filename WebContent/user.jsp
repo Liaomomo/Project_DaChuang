@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0"/>
-<title>登录</title>
+<title>用户中心</title>
 <link rel="stylesheet" href="../static/css/baseset.css">
 <link rel="stylesheet" href="../static/css/user.css">
 </head>
@@ -27,7 +27,7 @@
 		<!-- 主要功能 -->
 		<div class="mainfoundation">
 			<button class="favorites" id="manager"><img src="../static/imgs/user/favorites.png"  alt="收藏夹">条码管理</button>
-			<button class="history"><img src="../static/imgs/user/history.png" alt="历史记录">历史记录</button>
+			<button class="history"><img src="../static/imgs/user/history.png" alt="历史记录">修改密码</button>
 			<button class="logoff"><img src="../static/imgs/user/logout.png" alt="">注销</button>
 			<button class="update"><img src="../static/imgs/user/update.png" alt="">检查更新</button>
 			<button class="email"><img src="../static/imgs/user/email.png" alt="">联系我们</button>
@@ -54,17 +54,19 @@
         	document.getElementById("user_button").href="#";
         }
      })
-      var  manager = document.getElementById("manager");
+     
+     
+     var  manager = document.getElementById("manager");
    
      manager.onclick=function(){
-    	 alert("1")
+    	 
     	 var user_id = '<%= session.getAttribute("user_id")%>';
     	 
     	 if(user_id=='null' || user_id == null){
     		 alert("请登录");
     	 }else{
     		 
-    		 window.location = "../code/Manager_code.do?user_id="+user_id;
+    		 window.location = "../code/Manager_code.do";
     		 
     	 }
     	

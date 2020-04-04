@@ -14,7 +14,7 @@
 		<!-- 顶部导航栏 -->
 		<header class="cd-header clearf">
 			<div class="cd-header-box clearf">
-				<a href="index.jsp" class="f_left mar-l10"><</a>
+				<a href="../page/BarCode.do" class="f_left mar-l10"><</a>
 				<span>生成二维码</span>
 			</div>
 		</header>

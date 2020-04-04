@@ -29,12 +29,12 @@ public class Client_Controller {
 	   private User_Service_imp user_service;
 	
 	   
-       //ÓÃ»§µÇÂ¼
+       //ç”¨æˆ·ç™»å½•
 	   @RequestMapping(value="/login",produces={"application/json; charset=UTF-8"})
 	   @ResponseBody
 	   public List<Map> login(HttpServletRequest request,HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		   //±àÂëÎÊÌâ
+		   //ç¼–ç é—®é¢˜
 	        try {
 				request.setCharacterEncoding("utf-8");
 				response.setCharacterEncoding("utf-8");
@@ -43,40 +43,42 @@ public class Client_Controller {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        //»ñÈ¡Ìá½»Êı¾İ
+	        //è·å–æäº¤æ•°æ®
 	        String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
 		
-			
-			//Êı¾İ¿âÇëÇóÊı¾İ£¨»ñµÃÃÜÂë£©
-			List<Map> list = user_service.user_login(username);
-			String password_request = (String) list.get(0).get("password");
-			
-			int user_id =  (int) list.get(0).get("user_id");
-			
-			
-			if(password_request.equals(password)){
-				 HttpSession session = request.getSession();
-	             session.setAttribute("name", username);   
-	             session.setAttribute("user_id", user_id);
-	             return list;
-	            
-			}else{
-				
-				return null;
+			//æ•°æ®åº“è¯·æ±‚æ•°æ®ï¼ˆè·å¾—å¯†ç ï¼‰
+			try{
+				List<Map> list = user_service.user_login(username);
+				String password_request = (String) list.get(0).get("password");
+				int user_id =  (int) list.get(0).get("user_id");
+				if(password_request.equals(password)){
+					 HttpSession session = request.getSession();
+		             session.setAttribute("name", username);   
+		             session.setAttribute("user_id", user_id);
+		             return list;
+		            
+				}else{
+					
+					return null;
+				}
+			}catch (Exception e) {
+				System.out.println(e.toString());
 			}
+			
+			return null;
 			
            
 	  }
 	   
 	   
 	   
-	    //ÓÃ»§×¢²á
+	    //ç”¨æˆ·æ³¨å†Œ
 		@RequestMapping(value="/registe",method=RequestMethod.POST)
 		private ModelAndView registe(HttpServletRequest request) {
 			// TODO Auto-generated method stub
-	        //»ñÈ¡ÓÃ»§Êı¾İ
+	        //è·å–ç”¨æˆ·æ•°æ®
 			String name = request.getParameter("username");
 			String password = request.getParameter("password");
 			String email = request.getParameter("email");
@@ -84,7 +86,7 @@ public class Client_Controller {
 			
 			String info="name="+name+"    password="+password+"  email="+email;
 			System.out.println(info);
-	        //·â×°µ½user
+	        //å°è£…åˆ°user
 			User user = new User(name,password,email,phone);
 			
 			user_service.user_registe(user);

@@ -26,7 +26,7 @@ public class Page_Controller {
 	}
 	
 	// TODO Auto-generated method stub
-	// Éú³ÉÌõÂë
+	// ç”Ÿæˆæ¡ç 
 	@RequestMapping("/BarCode")
 	public ModelAndView BarCode() {
 		
@@ -37,15 +37,15 @@ public class Page_Controller {
 	}
 	
     // TODO Auto-generated method stub
-	// É¨ÃèÌõÂë
+	// æ‰«ææ¡ç 
 	@RequestMapping("/Scan")
 	public ModelAndView Scan() {
 		
-		ModelAndView modelAndView = new ModelAndView("../Scan.jsp");
+		ModelAndView modelAndView = new ModelAndView("../scans.jsp");
 		return modelAndView;
 		
 	}
-	//ÓÃ»§µÇÂ¼
+	//ç”¨æˆ·ç™»å½•
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		
@@ -54,8 +54,6 @@ public class Page_Controller {
 		HttpSession session=request.getSession();
 		
 		Object  name = session.getAttribute("name");
-		
-		System.out.println("name="+name);
 		
 		ModelAndView modelAndView;
 		
@@ -69,7 +67,7 @@ public class Page_Controller {
 		return modelAndView;
 		
 	}
-	//ÓÃ»§×¢²á
+	//ç”¨æˆ·æ³¨å†Œ
 	@RequestMapping("/register")
 	public ModelAndView register() {
 		
@@ -78,7 +76,7 @@ public class Page_Controller {
 		
 	}
 	
-	//¶¯Ì¬ÌõÂë
+	//åŠ¨æ€æ¡ç 
 	@RequestMapping("/dy_code")
 	public ModelAndView dy_code(HttpServletRequest req) {
 		
@@ -87,6 +85,14 @@ public class Page_Controller {
 		ModelAndView modelAndView = new ModelAndView("../Dy_Barcode.jsp");
 		
 		modelAndView.addObject("text", text);
+		return modelAndView;
+		
+	}
+	//éªŒè¯ç 
+	@RequestMapping("/Verification")
+	public ModelAndView Verification() {
+		
+		ModelAndView modelAndView = new ModelAndView("../number.jsp");
 		return modelAndView;
 		
 	}

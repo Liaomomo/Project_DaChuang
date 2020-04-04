@@ -64,7 +64,7 @@ public class logic_service_imp implements logic_service {
 					 outPutImage.createNewFile();
 			//5、将二维码写入图片  
 			 ImageIO.write(image, imageType, outPutImage);
-			 
+			
 			 
 			 return true;
 		} catch (WriterException e) {
@@ -104,9 +104,15 @@ public class logic_service_imp implements logic_service {
 	/**
 	 * 条码管理
 	 */
-	public List<Map> manager_code(String user_id) {
+	public List<Map> manager_code(int user_id) {
 		// TODO Auto-generated method stub
 		return Dymanic_Code.manager_code(user_id);
+	}
+
+	@Override
+	public List<Map> delete_code(String code_id) {
+		// TODO Auto-generated method stub
+		return  Dymanic_Code.delete_code(code_id);
 	}
 
 	

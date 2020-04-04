@@ -41,7 +41,7 @@
 							<div class="test">验证码</div>
 							<input  name="inputcode" type="text"  placeholder="验证码">
 							<span><img
-									id="validateCode" src="number.jsp" width="96" height="27"
+									id="validateCode" src="../page/Verification.do" width="96" height="27"
 									alt="" /> </span> <span><a id="changeCode"
 									href="javascript:void(0);" title="">看不清</a> </span>				
 						</div>  

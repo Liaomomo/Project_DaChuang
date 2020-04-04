@@ -8,6 +8,7 @@
 <title>二维码详情</title>
 <link rel="stylesheet" href="../static/css/baseset.css">
 <link rel="stylesheet" href="../static/css/detail.css">
+
 </head>
 
   <body>
@@ -24,10 +25,10 @@
 				<div class="title">
 					<label>二维码标签</label>
 				</div>
-				<div class="cd_img"><img src=${img_url} alt="二维码图片"></div>
-				<div class="cd_detail"><label>${info}</label></div>
+				<div class="cd_img"><img src=${url} alt="二维码图片"></div>
+				<div class="cd_detail"></div> 
 				<div class="btn_wrap">
-					<button class="btn">下载保存</button>
+					<button class="btn"><a href=${load} download>下载保存</a></button>
 					<button class="btn">新建二维码</button>
 				</div>
 				
@@ -39,4 +40,20 @@
 			</div>
 		</div>
   </body>
+  <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+  
+
+<style>
+     .cd_detail img{
+        display:block;
+        margin:0 auto;
+        width:250px;
+        heigth:250px;
+     }
+     .cd_detail p{
+       
+       text-align: center;
+     }
+     
+</style>
 </html>

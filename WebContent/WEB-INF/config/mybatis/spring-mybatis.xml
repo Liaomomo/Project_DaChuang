@@ -12,7 +12,7 @@
 	class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
        <!--  四要素：驱动、连接地址(备用：172.19.128.202)、账号、密码-->
         <property name="driverClassName" value="org.gjt.mm.mysql.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/school" />
+        <property name="url" value="jdbc:mysql://localhost:3306/school?useUnicode=true&amp;characterEncoding=UTF-8" />
         <property name="username" value="root" />
         <property name="password" value="123456" />
    </bean>

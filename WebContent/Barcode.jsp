@@ -47,10 +47,12 @@
 				
 		 </div>
 		<!-- 最底部 -->
-			<div class="bottom_nav">
-			<a href="../page/index.do" class="f_left w-50"><img src="../static/imgs/Home/home.png" alt="主页"></a>
-			<a href="../page/login.do" class="f_right w-50"><img src="../static/imgs/Home/user.png" alt="个人中心"></a>
+	<div class="cd-layout">
+		<div class="bottom-nav clearf">
+			<a href="../page/index.do" class="f_left w-50 clearf"><img src="../static/imgs/Home/home.png" alt="主页"></a>
+			<a href="../page/login.do" class="f_right w-50 clearf "><img src="../static/imgs/Home/user.png" alt="个人中心"></a>
 		</div>
+	</div>
 	</div>
 </body>
 

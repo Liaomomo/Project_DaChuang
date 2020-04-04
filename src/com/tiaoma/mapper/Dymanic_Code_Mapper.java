@@ -11,16 +11,19 @@ import com.tiaoma.model.Dy_Code;
 @Mapper
 public interface Dymanic_Code_Mapper {
      
-	    //ĞŞ¸ÄÌõÂëÄÚÈİ
+	    //ä¿®æ”¹æ¡ç å†…å®¹
 		public List<Map>  change_text(@Param("code_id") int code_id,@Param("text") String text);
 		
-		//»ñÈ¡ÌõÂëÄÚÈİ
+		//è·å–æ¡ç å†…å®¹
 		public List<Map>  Get_code_text(@Param("code_id") String code_id);
 		
-		//´´½¨¶¯Ì¬ÌõÂë
+		//åˆ›å»ºåŠ¨æ€æ¡ç 
 		public Dy_Code  create_Dy_code(Dy_Code code);
 		
-		//ÌõÂë¹ÜÀí
-		public List<Map>  manager_code (@Param("user_id") String user_id);
+		//æ¡ç ç®¡ç†
+		public List<Map>  manager_code (@Param("user_id") int user_id);
+		
+		//åˆ é™¤æ¡ç 
+		public List<Map>  delete_code (@Param("code_id") String code_id);
 		
 }

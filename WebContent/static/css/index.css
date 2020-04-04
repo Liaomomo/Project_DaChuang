@@ -50,17 +50,8 @@
 	margin-right:10px;
 }
 
-/*底部导航栏*/
-.cd-layout>.bottom-nav{
-	width:100%;
-	bottom: 0;
-	height:50px;
-	position: fixed;
-	left: 0;
-	background-color: #ffffff;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #f8f8f8;
-}
+/*搴曢儴瀵艰埅鏍�*/
+
 
 .w-50{
 	width:50%;
@@ -83,7 +74,7 @@
 	color: #eee;
 	text-align:center;
 }
-/*user区*/
+/*user鍖�*/
 .user-bg{
 	width:100%;
 /*	max-width: 640px;
@@ -119,7 +110,7 @@
 	box-shadow: 0 0 1px #e0e0e0;
 	z-index: 1000;
 }
-/*主要内容区*/
+/*涓昏鍐呭鍖�*/
 .codemain{
 	width:100%;
 	/*max-width: 640px;
@@ -168,7 +159,7 @@
 	top: 50%;
 	left: 50%;
 }
-/*杂七杂八的功能*/
+/*鏉備竷鏉傚叓鐨勫姛鑳�*/
 .others{
 	width:100%;
 	margin: 0 auto;

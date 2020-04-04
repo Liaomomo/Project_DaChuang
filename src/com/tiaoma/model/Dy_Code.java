@@ -10,13 +10,15 @@ public class Dy_Code {
 	String  img_url;
 	String  text;
 	String create_date;
+	String type;
 	
 	
 	
 	
 	
+     
 	public Dy_Code(String code_id, int user_id, String title, String html_url, String img_url, String text,
-			String create_date) {
+			String create_date, String type) {
 		super();
 		this.code_id = code_id;
 		this.user_id = user_id;
@@ -25,7 +27,25 @@ public class Dy_Code {
 		this.img_url = img_url;
 		this.text = text;
 		this.create_date = create_date;
+		this.type = type;
 	}
+	
+	
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public void setCreate_date(String create_date) {
+		this.create_date = create_date;
+	}
+
+
 	public String getCreate_date() {
 		return create_date;
 	}
