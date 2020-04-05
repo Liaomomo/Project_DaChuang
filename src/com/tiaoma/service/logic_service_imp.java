@@ -115,6 +115,14 @@ public class logic_service_imp implements logic_service {
 		return  Dymanic_Code.delete_code(code_id);
 	}
 
+	@Override
+	public List<Map> updata_code(String code_id, String text, String title, String type) {
+		// TODO Auto-generated method stub
+		return Dymanic_Code.updata_code(code_id, text, title, type);
+	}
+
+	
+
 	
 
 

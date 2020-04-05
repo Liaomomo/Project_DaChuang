@@ -96,6 +96,18 @@ public class Page_Controller {
 		return modelAndView;
 		
 	}
+	//动态条码
+		@RequestMapping("/dy_code1")
+		public ModelAndView dy_code1(HttpServletRequest req) {
+			
+			String text = req.getParameter("text");
+			System.out.println(text);
+			ModelAndView modelAndView = new ModelAndView("../Dy_Barcode1.jsp");
+			
+			modelAndView.addObject("text", text);
+			return modelAndView;
+			
+		}
 	
 	
 	

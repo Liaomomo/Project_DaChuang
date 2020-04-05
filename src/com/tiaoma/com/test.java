@@ -33,10 +33,8 @@ public class test {
 		 String img_url = rq.getParameter("img_url");
 		 
 		 String filePath = file_path+img_url;
-		 
-		 System.out.println(filePath);
 		
-	        File imageFile = new File(filePath);
+	     File imageFile = new File(filePath);
 	        
 	        if (imageFile.exists()) {
 	            FileInputStream fis = null;

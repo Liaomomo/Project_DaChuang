@@ -28,5 +28,10 @@
        
         DELETE FROM code WHERE code_id = (#{code_id}) 
 </select > 
+
+<select  id="updata_code"   parameterType="java.util.Map" >       
+
+        UPDATE code SET title = (#{title}),text = (#{text}),type = (#{type}) WHERE code_id = (#{code_id}) 
+</select >
   
 </mapper>

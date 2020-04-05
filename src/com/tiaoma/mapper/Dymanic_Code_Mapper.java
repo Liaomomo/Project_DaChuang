@@ -26,4 +26,8 @@ public interface Dymanic_Code_Mapper {
 		//删除条码
 		public List<Map>  delete_code (@Param("code_id") String code_id);
 		
+		//更新条码资源
+		public  List<Map> updata_code (@Param("code_id") String code_id,@Param("text") String text,@Param("title") String title,@Param("type") String type);
+		
+		
 }

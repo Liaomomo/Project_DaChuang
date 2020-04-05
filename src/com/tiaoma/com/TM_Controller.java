@@ -115,7 +115,7 @@ public class TM_Controller {
 	   
 	   /**
 	    * 
-	    * @param 动态条码生成 
+	    * @param 字符串动态条码生成 
 	    * @return
 	    */
 	   @RequestMapping("/Create_Dynamic_Code")
@@ -131,10 +131,12 @@ public class TM_Controller {
 			}
 		
 		//获取标题
-		String title = request.getParameter("title");  
+		String title = request.getParameter("hide_title");  
         
 		//获取文本
 		String text = request.getParameter("text");
+		
+		System.out.println("text="+text+"   title="+title);
 		
 	    //获取时间戳（当做条码的id）
 		String TimeMillis = String.valueOf(System.currentTimeMillis());
@@ -159,7 +161,7 @@ public class TM_Controller {
         int user_id =  (int) session.getAttribute("user_id");  
         
         //生成动态链接（访问连接）
-        String html_url = "http://192.168.0.3:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
+        String html_url = "http://172.19.204.2:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
 		
         //生成二维码
         logic_service.CodeCreate(html_url, 250, 250,code_img_url, "jpg");
@@ -197,8 +199,14 @@ public class TM_Controller {
 		public ModelAndView upload( MultipartFile upfile,HttpServletRequest request,ModelAndView model) throws Exception{
           
 	      
-	      //获取标题 if 用户未定义则直接取文件名
-	      String img_text = upfile.getOriginalFilename();
+	      //获取标题 
+	      String data_title = request.getParameter("hide_title");
+	      
+	      if(data_title=="" || data_title==null){
+	    	  //if 用户未定义则直接取文件名
+	    	  data_title = upfile.getOriginalFilename();
+	    	 
+	      }
 	      
 	      //获取用户id 
 		  HttpSession session = request.getSession();
@@ -226,7 +234,7 @@ public class TM_Controller {
 	      //获得文件类型（可以判断如果不是图片，禁止上传）  
 	      String contentType=upfile.getContentType();  
 	      //获得文件后缀名 
-	      System.out.println(contentType);
+	      
 	      String suffixName=contentType.substring(contentType.indexOf("/")+1);
 	      
 	      //定义文件名
@@ -237,21 +245,17 @@ public class TM_Controller {
 		  String code_img_url=file_path+"/Code_img/dynamic_code/"+TimeMillis+".jpg";
 				
 	      //生成动态链接（访问连接）
-	      String html_url = "http://192.168.0.3:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
+	      String html_url = "http://172.19.204.2:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
 	      //生成二维码
 	      
 	     logic_service.CodeCreate(html_url, 250, 250,code_img_url, "jpg");
-	    
-	      
-	      
-	      
+	   
 	      //用户上传文件的路径
 		  String text = null ;
 		 //动态条码类型
 		  String type = null ;
-		  
-	      
-	      if(suffixName.equals("mp4")){
+		 
+	      if(suffixName.equals("mp4") ||suffixName.equals("mp3") ){
 	    	  //定义视频保存路径
 		      String localPath=file_path+"User_video/";
 		      //文件保存路径
@@ -287,7 +291,7 @@ public class TM_Controller {
 		 
 		 try{
 			//生成动态条码模型
-			 Dy_Code code = new Dy_Code(code_id,user_id,img_text,html_url,img_url,text,create_date,type);
+			 Dy_Code code = new Dy_Code(code_id,user_id,data_title,html_url,img_url,text,create_date,type);
 			 //数据入库
 			 logic_service.create_Dy_code(code);
 		 }catch (Exception e) {
@@ -306,12 +310,13 @@ public class TM_Controller {
 	      
 		}
 	
+	    
+	    
 	   /**
 	    * 
 	    * @param 查看条码内容
 	    * @return
 	    */
-	  
 	   @RequestMapping("/view_Dynamic_Code")
 	   private ModelAndView view_Dynamic_Code(HttpServletRequest request){
 		
@@ -331,12 +336,13 @@ public class TM_Controller {
 		return mv;
 	  
 	  }
+	   
+	   
 	   /**
 	    * 
 	    * @param 查看条码图片
 	    * @return
 	    */
-	  
 	   @RequestMapping("/view_Code")
 	   private ModelAndView view_Code(HttpServletRequest request){
 		
@@ -364,24 +370,127 @@ public class TM_Controller {
 	   
 	   
 	   
-	   //修改条码内容
+	  
+	   /**
+	    * 
+	    * @param request
+	    * @return
+	    *  //修改条码内容
+	    */
 	   @RequestMapping("/Change_Code")
 	   private ModelAndView Change_Dynamic_Code(HttpServletRequest request){
 		
-		String text = request.getParameter("text");
-		int code_id = 1;
+		String code_id = request.getParameter("token");
 		
-	    ModelAndView mv = new ModelAndView("/TM_HTML/Dymanic_Code.jsp");
-	    //内容入库
-	    logic_service.change_text(code_id, text);
-	    
-	    mv.addObject("info",text);
-	    mv.addObject("img_url","./TM_img/Dymanic_Code.jpg");
-		return mv;
-	  
+		//检索用户数据
+		List<Map> list = logic_service.Get_code_text(code_id);
+		
+		ModelAndView andView = new ModelAndView("/change_code.jsp");
+		
+		//
+		HttpSession session = request.getSession();
+	    session.setAttribute("updata_code_id", (String) list.get(0).get("code_id"));
+		
+		andView.addObject("text", (String) list.get(0).get("text"));
+		andView.addObject("title", (String) list.get(0).get("title"));
+		andView.addObject("type", (String) list.get(0).get("type"));
+		
+		return andView;
+	   
+	 
 	  }
 	   
-	   //条码管理界面
+	   
+	   /**
+	    * 更新条码内容
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	    */
+	   @RequestMapping("/updata_code_data")
+	   private ModelAndView upadta_code( MultipartFile upfile,HttpServletRequest request) throws IllegalStateException, IOException{
+	   
+	   //获取要更新的条码id
+	   HttpSession session = request.getSession();
+	   String updata_id = (String) session.getAttribute("updata_code_id");
+	   //获取标题 
+	   String data_title = request.getParameter("hide_title"); 
+	   
+	   //获取用户提交的数据
+       //获取项目路径 
+	   String class_path=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+	   int num=class_path.indexOf(".metadata");
+	   //获取到项目的webcontent路径
+	   String file_path = class_path.substring(1,num)+"Project_DaChuang/WebContent/";
+	 
+       //生成uuid作为文件名称  
+       String uuid = UUID.randomUUID().toString().replaceAll("-","");
+       //获得文件类型（可以判断如果不是图片，禁止上传）  
+       String contentType=upfile.getContentType();  
+       //获得文件后缀名 
+      
+       String suffixName=contentType.substring(contentType.indexOf("/")+1);
+      
+       //定义文件名
+       String filename=null; 
+       filename=uuid+"."+suffixName; 
+     
+       //用户上传文件的路径
+	   String text = null ;
+	   //动态条码类型
+	   String type = null ;
+	   
+	 
+       if(suffixName.equals("mp4") ||suffixName.equals("mp3") ){
+    	  //定义视频保存路径
+	      String localPath=file_path+"User_video/";
+	      //文件保存路径
+	      upfile.transferTo(new File(localPath+filename));
+	      //用户上传视频的路径
+		  text = "../User_video/"+filename;
+		  //动态条码类型
+		  type = "video";
+		  
+	  
+       }else if(suffixName.equals("jpeg")){
+    	  //定义图片保存路径
+	      String localPath=file_path+"User_img/";
+	      //文件保存路径
+	      
+	      upfile.transferTo(new File(localPath+filename));
+	      //用户上传图片的路径
+		  text = "../User_img/"+filename;
+		  //动态条码类型
+		  type = "img"; 
+       }else{
+    	  text = "error";
+		  //动态条码类型
+		  type = "error";
+       }
+       
+       
+	   //删除原来的文件的资源
+       List<Map> list = logic_service.Get_code_text(updata_id);
+	   String data_url = (String) list.get(0).get("text");
+	   File file = new File(file_path+data_url.replace("../", "/"));
+	   file.delete();
+	   
+	   
+	   //更新数据库资源
+	   System.out.println("id="+updata_id+"  text="+text+"  data_title="+data_title);
+	   logic_service.updata_code(updata_id, text, data_title, type);
+	   
+	   ModelAndView modelAndView = new ModelAndView("../page/login.do");
+	   
+	   return modelAndView;
+		   
+		   
+	   }
+	   
+	   /**
+	    * //条码管理界面
+	    * @param request
+	    * @return
+	    */
 	   @RequestMapping("/Manager_code")
 	   public ModelAndView Manager_code(HttpServletRequest request){
 		 
@@ -404,7 +513,13 @@ public class TM_Controller {
 		
 	   }
 	   
-	   //删除条码
+	   
+	   
+	   /**
+	    * //删除条码
+	    * @param request
+	    * @return
+	    */
 	   @RequestMapping("/delete_code")
 	   public ModelAndView delete_code(HttpServletRequest request){
 		   
@@ -420,7 +535,6 @@ public class TM_Controller {
 			 File  file = new File(file_path+"Code_img/dynamic_code/"+token+".jpg");
 			 file.delete();
 			 
-			
 			 //获取条码内容
 			 List<Map> list = logic_service.Get_code_text(token);
 			 String text = (String) list.get(0).get("text");
@@ -455,7 +569,11 @@ public class TM_Controller {
 	   
 	   
 	   
-	   //二维码图片解码
+	   /**
+	    * //二维码图片解码
+	    * @param str
+	    * @return
+	    */
 	   @RequestMapping("/Decoder")
 	   @ResponseBody
 	   public  String getURLDecoderString(String str) {
@@ -463,7 +581,7 @@ public class TM_Controller {
 		   String resultStr = null;
 		   try {  
 	            Reader reader = new MultiFormatReader();  
-	            String imgPath = "D:/java/Project_DaChua  ng/WebContent/Code_img/statis_code/1585906979631.jpg";  
+	            String imgPath = "D:/java/Project_DaChuang/WebContent/Code_img/statis_code/1585906979631.jpg";  
 	            File file = new File(imgPath);  
 	            BufferedImage image; 
 	            

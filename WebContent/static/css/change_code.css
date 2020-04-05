@@ -313,4 +313,20 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     z-index: 3000;
 	
 }
-    
+.change_text{
+	
+	 border: 1px solid green;
+	 width:400px;
+	 height:200px;
+	 margin:3% auto;
+	
+}
+
+#change_content{
+	
+	width: 260px;
+    height: 150px;
+    font-size: 16px;
+   	
+}
+   

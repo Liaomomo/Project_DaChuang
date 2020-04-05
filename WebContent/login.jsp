@@ -14,7 +14,7 @@
 		<!-- 顶部导航栏 -->
 		<header class="cd-header clearf">
 			<div class="cd-header-box clearf">
-				<a href="user.html" class="f_left mar-l10"><</a>
+				<a href="../page/index.do" class="f_left mar-l10"><</a>
 				
 			</div>
 		</header>
