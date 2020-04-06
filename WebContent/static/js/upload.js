@@ -1,5 +1,5 @@
 function fileSelected() {
-    var file = document.getElementById('file').files[0];
+    var file = document.getElementById('data_input').files[0];
     if (file) {
         var fileSize = 0;
         if (file.size > 1024 * 1024)

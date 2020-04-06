@@ -116,12 +116,12 @@
 				<div class="toolbar">
 					<div class="toolbar1 clearf">
 						<a class="nav_list" title="page_1" href="#"  ><img src="../static/imgs/pics.png" id="page_img" alt="图片">图片</a>
-						<a class="nav_list" title="page_2" href="#" ><img  src="../static/imgs/scene.png" alt="视频">视频</a>
+						<a class="nav_list" title="page_2" href="#" ><img  src="../static/imgs/scene.png" id="page_video" alt="视频">视频</a>
 						<a class="nav_list" title="page_3" href="#" ><img class="selected" src="../static/imgs/notebook.png" alt="文字">文字</a>
 					</div>
 					
 					<div class="toolbar2 clearf">
-						<a class="nav_list" title="page_4" href="#"  ><img  src="../static/imgs/upload.png" alt="语音">文件</a>
+						<a class="nav_list" title="page_4" href="#"  ><img  src="../static/imgs/upload.png" id="page_word" alt="语音">文件</a>
 						<a class="nav_list" title="page_5" href="#" ><img   src="../static/imgs/link.png" alt="网页链接">链接</a>
 						<a class="nav_list" title="page_6" href="#" ><img   src="../static/imgs/wc.jpg" alt="微信号">微信</a>
 <!-- 						<ahref="#" ><img src="card.png" alt="名片"></a>
@@ -163,7 +163,7 @@
 				</div>
 				<!--3. 文本 -->
 				<div class="textArea-box clearf page" id="page_3">
-					<form  action="../code/Create_Dynamic_Code.do" method="post" id="form_text">
+					<form  action="../code/updata_code_str.do" method="post" id="form_text">
 						<textarea id="text_content" class="main_text" name="text"  placeholder="请输入内容" ></textarea>
 						<div class="div_Singular" >
 						   <input type="button" class="btns_Singular"  id="text_id" value="保存修改" />
@@ -191,7 +191,7 @@
 				</div>
 				<!--5. 网址 -->
 				<div class="textArea-box clearf page" id="page_5" style="display:none;">
-					<form  action="./code/CreateCode.do" method="post" id="form_05" >
+					<form  action="./code/updata_code_str.do" method="post" id="form_05" >
 						<div>
 							<label>请输入网页地址</label>
 							<input type="text" id="url_content" class="url_input" name="text" placeholder="http://" value="" ></div>
@@ -203,7 +203,7 @@
 				</div>
 				<!-- 6.微信 -->
 				<div class="textArea-box clearf page" id="page_6" style="display:none;">
-					<form  action="./code/CreateCode.do" method="post" id="form_06">
+					<form  action="./code/updata_code_stre.do" method="post" id="form_06">
 						<div>
 							<a href="#" class="wx" onclick="pubShow()">公众号</a>
 							<a href="#" class="wx" style="margin-left:20px;" onclick="priShow()">个人账号</a>
@@ -277,7 +277,7 @@ $("#data_id").click(function(){
 	 }
 	 else{
 		 $('#hide_data').attr("value",$('#t_title').val())
-		 $("#form_data").submit();
+		 $(".form_data").submit();
 		 
 	 }
 });
@@ -328,7 +328,7 @@ $(function(){
 	//视频
 	}else if(type =='video'){
 		$(".toolbar img").removeClass("selected");
-		$("#page_img").addClass("selected");
+		$("#page_video").addClass("selected");
 		
 		$(".page").css("display","none");
 		// 显示当前页
@@ -336,13 +336,23 @@ $(function(){
 		
 		$("#t_title").attr("value",'${title}');
 		$("#prevideo").attr("src",'${text}');
+	//文件
+	}else if(type =='word'){
+		
+		$(".toolbar img").removeClass("selected");
+		$("#page_word").addClass("selected");
+		
+		$(".page").css("display","none");
+		// 显示当前页
+		$("#page_4").css("display","");
+		
+		$("#t_title").attr("value",'${title}');
+		$("#data_input").attr("src",'${text}');
+		
 	}
 	
 });
 
 
-
-
-	
 </script>
 </html>

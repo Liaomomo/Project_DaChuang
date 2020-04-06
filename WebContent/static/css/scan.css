@@ -1,0 +1,190 @@
+*{
+        padding:0;
+        margin:0;
+    }
+    .cd-header-box {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fafafa;
+    height: 60px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 1px #e0e0e0
+    }
+    .cd-header-box>span {
+    line-height: 60px;
+    font-size: 20px;
+    /* font-weight: 700; */
+    letter-spacing: 10px;
+    }
+    .cd-header-box>a {
+    line-height: 60px;
+    font-size: 30px;
+    font-weight: 700;
+    float:left;
+    
+    }
+    a{
+        text-decoration:none;
+        color:#fff;
+    }
+    html{
+        width:100%;
+        height:100%;
+        font-size:16px;
+    }
+    body{
+        width:100%;
+        height:100%;
+
+    }
+    .total{
+        width:100%;
+        height:100%;
+        /*background:url(/static/img/bg2.jpeg) no-repeat;*/
+        background-size:100% 100%;
+        overflow: hidden;
+        /*background-color: #322F42;*/
+        margin-bottom: 100px;
+    }
+    #back_upper{
+        display: block;
+        width:4rem;
+        height:4rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        background:url(http://img0.ph.126.net/7vVoDLyELLu5Ti2agzvxjA==/106116066320155563.png) no-repeat;
+        opacity:1;
+    }
+    #v{
+        width:320px;
+        height:240px;
+    }
+    #qr-canvas{
+        display:none;
+    }
+    #outdiv
+    {
+
+    }
+    .scanning_frame{
+        margin:5rem auto;
+        width:320px;
+        height:240px;
+        border: 3px solid #000;
+        position: relative
+    }
+    #context{
+    	 width: 100%;
+    	 max-width: 640px;
+    	 margin: 0 auto;
+    }
+    #context li{
+    	float: left;
+    	width: 50%;
+    	height: 40px;
+    	
+    	text-align: center;
+    	list-style: none;
+    	
+    }
+    #context li button{
+    	font-size: 18px;
+    	width: 40%;
+    	height: 30px;
+    }
+    #context li input{
+    	font-size: 18px;
+    	width: 50%;
+    	height: 40px;
+    }
+    
+     .again_scan{
+     	display: block;
+        width: 100px;
+        height: 30px;
+        margin:5% auto;
+        font-size: 18px;
+        
+
+     }
+    
+    #result{
+        width:15rem;
+        height:auto;
+        font-size:2rem;
+        text-align: center;
+        line-height: 4rem;
+        margin:0 auto;
+        color: #d81e06;
+    }
+    /*加载动画效果*/
+    .spinner {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top:90px;
+        left: 130px;
+        /*background-color: #fff;*/
+    }
+
+    .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #d81e06;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: bounce 2.0s infinite ease-in-out;
+        animation: bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes bounce {
+        0%, 100% { -webkit-transform: scale(0.0) }
+        50% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+        }
+        50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        }
+    }
+    
+    
+    .cd-layout>.bottom-nav{
+	width:100%;
+	bottom: 2px;
+	height:10%;
+	position:fixed;
+	left: 0;
+	background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #f8f8f8;
+}
+.cd-layout>.bottom-nav>a{
+    width: 50%;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #eee;
+    text-align: center;
+}
+.w-50>img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-left: 40%;
+}

@@ -36,8 +36,13 @@
      else if(name=='text' || name==''){
     	 
     	 $(".cd_detail").append("<p>"+'${info}'+"</p>");
-     }else if(name=="video" ){
+    	 
+     }else if(name=="video"){
     	 $(".cd_detail").append("<video src="+"${info}"+" height='200px' width='320px' controls='controls'>");
+    	 
+     }else if(name=="word"){
+    	 
+    	 $(".cd_detail").append("<a href="+'${info}'+">"+"${title}"+"</a>");
     	 
      }
 

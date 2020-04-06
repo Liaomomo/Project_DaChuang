@@ -161,7 +161,7 @@ public class TM_Controller {
         int user_id =  (int) session.getAttribute("user_id");  
         
         //生成动态链接（访问连接）
-        String html_url = "http://172.19.204.2:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
+        String html_url = "http://192.168.0.3:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
 		
         //生成二维码
         logic_service.CodeCreate(html_url, 250, 250,code_img_url, "jpg");
@@ -199,6 +199,7 @@ public class TM_Controller {
 		public ModelAndView upload( MultipartFile upfile,HttpServletRequest request,ModelAndView model) throws Exception{
           
 	      
+	    	
 	      //获取标题 
 	      String data_title = request.getParameter("hide_title");
 	      
@@ -245,7 +246,7 @@ public class TM_Controller {
 		  String code_img_url=file_path+"/Code_img/dynamic_code/"+TimeMillis+".jpg";
 				
 	      //生成动态链接（访问连接）
-	      String html_url = "http://172.19.204.2:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
+	      String html_url = "http://192.168.0.3:8080/Project_DaChuang/code/view_Dynamic_Code.do?token="+code_id;
 	      //生成二维码
 	      
 	     logic_service.CodeCreate(html_url, 250, 250,code_img_url, "jpg");
@@ -254,7 +255,8 @@ public class TM_Controller {
 		  String text = null ;
 		 //动态条码类型
 		  String type = null ;
-		 
+		  System.out.println("suffixName="+suffixName);
+		  
 	      if(suffixName.equals("mp4") ||suffixName.equals("mp3") ){
 	    	  //定义视频保存路径
 		      String localPath=file_path+"User_video/";
@@ -265,9 +267,8 @@ public class TM_Controller {
 			  //动态条码类型
 			  type = "video";
 			  
-	    	  
 	      }else if(suffixName.equals("jpeg")){
-	    	 //定义图片保存路径
+	    	  //定义图片保存路径
 		      String localPath=file_path+"User_img/";
 		      //文件保存路径
 		      
@@ -277,7 +278,18 @@ public class TM_Controller {
 			  //动态条码类型
 			  type = "img";
 			 
-	      }else{
+	      }else if(suffixName.equals("plain") || suffixName.equals("word")){
+	    	  //定义图片保存路径
+		      String localPath=file_path+"User_word/";
+		      //文件保存路径
+		      
+		      upfile.transferTo(new File(localPath+filename));
+		      //用户上传图片的路径
+			  text = "../User_word/"+filename;
+			  //动态条码类型
+			  type = "word";
+	      }
+	      else{
 	    	  text = "error";
 			  //动态条码类型
 			  type = "error";
@@ -330,9 +342,10 @@ public class TM_Controller {
 	    
 	    String text = (String) list.get(0).get("text");
 	    String type = (String) list.get(0).get("type");
-	    
+	    String title = (String) list.get(0).get("title");
 	    mv.addObject("info",text);
 	    mv.addObject("type",type);
+	    mv.addObject("title",title);
 		return mv;
 	  
 	  }
@@ -402,7 +415,7 @@ public class TM_Controller {
 	   
 	   
 	   /**
-	    * 更新条码内容
+	    * 更新条码内容  文件类型
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	    */
@@ -461,12 +474,23 @@ public class TM_Controller {
 		  text = "../User_img/"+filename;
 		  //动态条码类型
 		  type = "img"; 
-       }else{
+       }else if(suffixName.equals("plain")){
+    	 //定义文件保存路径
+ 	      String localPath=file_path+"User_word/";
+ 	      //文件保存路径
+ 	      
+ 	      upfile.transferTo(new File(localPath+filename));
+ 	      //用户上传图片的路径
+ 		  text = "../User_word/"+filename;
+ 		  //动态条码类型
+ 		  type = "word"; 
+    	   
+       }
+       else{
     	  text = "error";
 		  //动态条码类型
 		  type = "error";
        }
-       
        
 	   //删除原来的文件的资源
        List<Map> list = logic_service.Get_code_text(updata_id);
@@ -485,6 +509,47 @@ public class TM_Controller {
 		   
 		   
 	   }
+	   
+	   
+	   /**
+	    * 更新条码内容  字符类型
+	    * @throws IOException 
+	    * @throws IllegalStateException 
+	    */
+	   @RequestMapping("/updata_code_str")
+	   private ModelAndView upadta_code_String( MultipartFile upfile,HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException{
+	   
+		 //设置字符编码 防止中文乱码
+		   try {
+				request.setCharacterEncoding("utf-8");
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html;charset=UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	   //获取要更新的条码id
+	   HttpSession session = request.getSession();
+	   String updata_id = (String) session.getAttribute("updata_code_id");
+	   //获取标题 
+	   String data_title = request.getParameter("hide_title"); 
+	   
+	   //获取用户提交的数据
+	   String text = request.getParameter("text"); 
+	 
+       String type = "text";
+	
+	   //更新数据库资源
+	  
+	   logic_service.updata_code(updata_id, text, data_title, type);
+	   
+	   ModelAndView modelAndView = new ModelAndView("../page/login.do");
+	   
+	   return modelAndView;
+		   
+		   
+	   }
+	   
 	   
 	   /**
 	    * //条码管理界面
